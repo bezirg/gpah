@@ -1,0 +1,5 @@
+hackage/*
+dist/*
+hackage.tar
+*.hi
+*.o
