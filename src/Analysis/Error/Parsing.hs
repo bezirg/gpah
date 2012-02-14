@@ -7,10 +7,6 @@ import Control.Monad (foldM)
 import System.FilePath ((</>))
 import System.IO
 
--- for encoding conversion
-import qualified Codec.Text.IConv as IConv
-import qualified Data.ByteString.Lazy.Char8 as B
-
 -- for strictness
 import Control.Exception (evaluate)
 import Control.DeepSeq
@@ -20,7 +16,10 @@ import Control.DeepSeq
 parseAnalyseModuleFile :: FilePath -> IO Analysis
 parseAnalyseModuleFile fp = do
   -- discard characters that fail to convert to utf-8
-  contents <-  fmap (B.unpack . IConv.convertFuzzy IConv.Discard "UTF-8" "UTF-8") (B.readFile fp)
+  contents <- do 
+    h <- openFile fp ReadMode
+    hSetEncoding h =<< mkTextEncoding "UTF-8//IGNORE"
+    hGetContents h
 
   -- remove #ifdef-style pragmas, cannot be parsed by HSE
   let clearedContents = removePragmas contents
