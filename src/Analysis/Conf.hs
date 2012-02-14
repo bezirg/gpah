@@ -1,6 +1,6 @@
 module Analysis.Conf where
 
-hackageDir = "hackage"
+hackageDir = "/tmp/hackage"
 hackageLog = "hackage.log"
 
 

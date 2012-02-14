@@ -16,7 +16,7 @@ import Distribution.Package
 
 cabalHasExecs :: FilePath -> IO Bool
 cabalHasExecs fp = do
-  (GenericPackageDescription _ _ _ execs _)   <- readPackageDescription silent fp
+  (GenericPackageDescription _ _ _ execs _ _)   <- readPackageDescription silent fp
   return $ not $ null execs
 
 
@@ -34,7 +34,7 @@ cabalDepends fp = do
 
 -- Takes a parsed Cabal GenericPackageDescription and return a list of Dependencies
 pkgDepends :: GenericPackageDescription -> [Dependency]  
-pkgDepends (GenericPackageDescription pkgdesc _ lib execs tests) = pkgdescDepends pkgdesc ++ libDepends lib ++ execsDepends execs ++ testsDepends tests
+pkgDepends (GenericPackageDescription pkgdesc _ lib execs tests _) = pkgdescDepends pkgdesc ++ libDepends lib ++ execsDepends execs ++ testsDepends tests
   where    
     pkgdescDepends = buildDepends
     libDepends mnode = maybe [] nodeDepends mnode

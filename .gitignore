@@ -1,5 +1,6 @@
 hackage/*
 dist/*
+.virthualenv/
 hackage.tar
 *.hi
 *.o
