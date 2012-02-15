@@ -36,6 +36,9 @@ misc-hackage:
 misc-date:
 	./dist/build/MiscDate/MiscDate
 
+cpp:
+	./dist/build/Cpp/Cpp
+
 readme:
 	pandoc README.md -o README.html
 
