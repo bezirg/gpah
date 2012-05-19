@@ -46,8 +46,8 @@ data DerivingType = Normal | StandAlone | Overload
 instance NFData DerivingType where
    rnf a = a `seq` ()
 
-favInstances = ["Bounded", "Data", "Enum", "Eq", "Foldable", "Ix", "Ord", "Read", "Show", "Traversable", "Typeable", "Generic"]
-
+deriveableClasses = ["Bounded", "Data", "Enum", "Eq", "Foldable", "Ix", "Ord", "Read", "Show", "Traversable", "Typeable", "Generic"]
+nonGNDClasses = ["Read", "Show", "Typeable","Data"] -- classes that are not **inherited** when in generalized newtype deriving, but instead derived
 
 derivingName :: Deriving -> String
 derivingName (qName, _) = qNameToString qName

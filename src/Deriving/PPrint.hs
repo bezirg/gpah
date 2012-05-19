@@ -13,7 +13,7 @@ pprint (Analysis a1 a2 a3 a4 a5 a6) fp = do
            ["TopDerivedClasses", show $ sortBy (flip compare `on` snd) $ M.toList a2],
            ["NormalDeriving", show $ a3],
            ["StandaloneDeriving", show $ a4],
-           ["NewtypeDeriving", show $ a5],
+           ["GeneralizedNewtypeDeriving", show $ a5],
            ["InstancesPreferredToWriteManualThanAutoDerive", show $ a6]
           ]
       pCSV = printCSV p

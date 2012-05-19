@@ -25,7 +25,7 @@ analyzeDecl (DataDecl _ dataOrNew _ _ name _ ds) = let lds = length ds
                                                      (M.fromList $ zip nds (repeat 1)) -- top
                                                      lds -- normal
                                                      0   -- standalone
-                                                     (if dataOrNew == NewType then length (favInstances `intersect` nds) else 0) -- newtype
+                                                     (if dataOrNew == NewType then length (nonGNDClasses `intersect` nds) else 0) -- newtype
                                                      0 -- overload
 
 
@@ -44,9 +44,9 @@ analyzeDecl (DerivDecl _ _ derClass typeParams) = Analysis
                                                   (M.singleton (qNameToString derClass) 1) -- top
                                                   0 -- normal
                                                   1 -- standalone
-                                                  (fromBool $ (qNameToString derClass) `elem` favInstances) -- newtype
+                                                  0 -- newtype
                                                   0 -- overload
 
-analyzeDecl (InstDecl _ _ derClass typeParams _) = Analysis 0 M.empty 0 0 0 $ fromBool $ (qNameToString derClass) `elem` favInstances -- overload
+analyzeDecl (InstDecl _ _ derClass typeParams _) = Analysis 0 M.empty 0 0 0 $ fromBool $ (qNameToString derClass) `elem` deriveableClasses -- overload
 
 analyzeDecl _ = mempty
