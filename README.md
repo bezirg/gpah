@@ -41,9 +41,6 @@ make get-hackage
     python hackage.py hackage
     ~~~
 
-* If you gave different paths for the archive and the log, please
-update the `src/Analysis/Conf.hs`
-
 ## Compiling the source code
 
 ~~~
@@ -52,51 +49,19 @@ make
 
 ## Before running
 
-- Edit `hackage/bytestring/0.9.2.1/bytestring-0.9.2.1/bytestring.cabal` and remove the tests
-
 - Remove `hackage/hsc3/0.11/hsc3-0.11/Help` directory
+
+- (optional) To make the analysis run in-memory (faster and less disk-intensive),
+  do `cp -r ./hackage/ /tmp` . This command will copy the hackage archive
+  to RAM, providing you have enough memory allocated to `tmpfs`.
 
 
 ## Running the program
 
-### The easy way
+After building the program, run it with
 
-There are some make commands for easier running the executables:
+`dist/build/Run/Run args`
 
-~~~
-make (deriving | function | error | uni | misc-hackage | misc-date)
-~~~
+For a detailed description of the accepted arguments run:
 
-### The manual way
-
-The executables are under `dist/build`: 
-
-~~~
-DerivingParsing, DerivingMining,
-FunctionParsing,FunctionMining,
-ErrorParsing, ErrorMining,
-UniParsing, UniMining,
-MiscHackage, MiscDate
-~~~
-
-Select the analysis you want to run (let's say FunctionAnalysis) and do:
-
-~~~
-./dist/build/FunctionParsing/FunctionParsing | ./dist/build/FunctionMining/FunctionMining
-~~~
-
-Alternatively you can store the results for later consumption:
-
-~~~
-./dist/build/DerivingParsing/DerivingParsing > deriving_results.txt
-~~~
-
-And later:
-
-~~~
-cat deriving_results.txt | ./dist/build/DerivingMining/DerivingMining
-~~~
-
-
-
-
+`dist/build/Run/Run --help`

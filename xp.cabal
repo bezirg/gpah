@@ -1,77 +1,16 @@
 name:                  xp
 version:               0.0.1
-synopsis:              Utilities for a simple, implicitly typed functional
-                       language.
-description:           Generic Programming Use in Hackage: 
+synopsis:              Deriving Usage Analysis for Hackage
+description:           Generic Programming Use in Hackage:
                        Project for master course "Generic Programming" at Utrecht University
-author:                Christiaan Floor, Nikolaos Bezirgiannis
-maintainer:            ChristiaanFloor <christiaanfloor@hotmail.com>, NikolaosBezirgiannis <n.bezirgiannis@students.uu.nl>
+author:                Nikolaos Bezirgiannis
+maintainer:            NikolaosBezirgiannis <n.bezirgiannis@students.uu.nl>
 stability:             provisional
 build-type:            Simple
-cabal-version:         >= 1.14.0
+cabal-version:         >= 1.8
                       
--- library
---     build-depends: base
---     hs-source-dirs: src
---     ghc-options: -Iinclude -Iinclude/
---     cpp-options: -Implo -I mpli
---     include-dirs: include-mplo include-mpli
---     includes: incl/Mplo.h
-                            
-executable Cpp
-  main-is:             Analysis/Cpp.hs
-  build-depends:       base, process, haskell-src-exts, syb, directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
+executable Run
+  main-is:             Main.hs
+  build-depends:       base, cmdargs, haskell-src-exts, filepath, Cabal >= 1.14.0, directory, deepseq, bytestring, iconv, containers >= 0.4.2.0, syb, uniplate, process, csv
+  ghc-options:         -rtsopts                                    
   hs-source-dirs:      src
-
-executable MiscHackage
-  main-is:             Analysis/Misc/Hackage.hs
-  build-depends:       base, haskell-src-exts, syb, directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable MiscDate
-  main-is:             Analysis/Misc/Date.hs
-  build-depends:       base, haskell-src-exts, syb, directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable DerivingParsing
-  main-is:             Analysis/Deriving/Parsing.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  ghc-options: -rtsopts
-  hs-source-dirs:      src
-
-executable DerivingMining
-  main-is:             Analysis/Deriving/Mining.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable FunctionParsing
-  main-is:             Analysis/Function/Parsing.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable FunctionMining
-  main-is:             Analysis/Function/Mining.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable ErrorParsing
-  main-is:             Analysis/Error/Parsing.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  ghc-options: -rtsopts
-  hs-source-dirs:      src
-
-executable ErrorMining
-  main-is:             Analysis/Error/Mining.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable UniParsing
-  main-is:             Analysis/Uni/Parsing.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-
-executable UniMining
-  main-is:             Analysis/Uni/Mining.hs
-  build-depends:       base, haskell-src-exts, syb,  directory, filepath, Cabal >= 1.14.0, uniplate, deepseq, containers >= 0.4.2.0, bytestring, iconv
-  hs-source-dirs:      src
-

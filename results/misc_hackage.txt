@@ -1,8 +1,0 @@
--- time 0m36.574s
-
-Packages:3794 
-Modules:36464 
-LibsUsingGP:156 
-LibsUsingGPWithExe:61 
-LibsUsingSyb:94 
-LibsUsingUni:26

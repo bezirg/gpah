@@ -1,6 +1,8 @@
-hackage/*
-dist/*
+hackage*/
+hackage
+hackage*.log
+dist/
 .virthualenv/
-hackage.tar
+hackage*.tar
 *.hi
 *.o
