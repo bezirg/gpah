@@ -13,31 +13,32 @@ data Analysis = Analysis {
     , stdAloneDer :: Int
     , newtypeDer :: Int
     , overloadInst :: Int
+    , topOverload :: M.Map ClassName Int
     }
               deriving (Show)
 
 instance Monoid Analysis where
-    mempty = Analysis 0 M.empty 0 0 0 0
-    (Analysis x1 x2 x3 x4 x5 x6) `mappend` (Analysis y1 y2 y3 y4 y5 y6) = Analysis
+    mempty = Analysis 0 M.empty 0 0 0 0 M.empty
+    (Analysis x1 x2 x3 x4 x5 x6 x7) `mappend` (Analysis y1 y2 y3 y4 y5 y6 y7) = Analysis
                                                                                             (x1+y1)
                                                                                             (M.unionWith (+) x2 y2)
                                                                                             (x3+y3)
                                                                                             (x4+y4)
                                                                                             (x5+y5)
                                                                                             (x6+y6)
+                                                                                            (M.unionWith (+) x7 y7)
 
 
 instance NFData Analysis where
-    rnf (Analysis a1 a2 a3 a4 a5 a6) = a1
+    rnf (Analysis a1 a2 a3 a4 a5 a6 a7) = a1
                                    `deepseq` a2
                                    `deepseq` a3
                                    `deepseq` a4
                                    `deepseq` a5
                                    `deepseq` a6
+                                   `deepseq` a7
                                    `deepseq` ()
 
-
--- type Analysis = M.Map ClassName (M.Map ModuleFileName (M.Map DataName (LineNumber, DerivingType)))
 
 -- instead of Normal, more precise DataDecl, GDataDecl, GDataInsDecl
 data DerivingType = Normal | StandAlone | Overload
