@@ -40,14 +40,16 @@ analyzeDecl (DataInsDecl _ dataOrNew _  _ ds) = analyzeDecl (DataDecl undefined 
 analyzeDecl (GDataInsDecl _ dataOrNew typeParams _ _ ds) = analyzeDecl (DataDecl undefined dataOrNew undefined undefined undefined undefined ds) -- same as DataDecl
 
 -- standalone deriving
-analyzeDecl (DerivDecl _ _ derClass typeParams) = Analysis 
-                                                  1 -- size
-                                                  (M.singleton (qNameToString derClass) 1) -- top
-                                                  0 -- normal
-                                                  1 -- standalone
-                                                  0 -- newtype
-                                                  0 -- overload
-                                                  M.empty
+analyzeDecl (DerivDecl _ _ derClass typeParams) = let isDeriveableInstance = qNameToString derClass `elem` deriveableClasses
+                                                   in
+                                                     Analysis 
+                                                     1 -- size
+                                                     (M.singleton (qNameToString derClass) 1) -- top
+                                                     0 -- normal
+                                                     1 -- standalone
+                                                     (fromBool $ not isDeriveableInstance) -- newtype
+                                                     0 -- overload
+                                                     M.empty
 
 analyzeDecl (InstDecl _ _ derClass typeParams _) = let isDeriveableInstance = qNameToString derClass `elem` deriveableClasses
                                                    in

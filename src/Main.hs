@@ -61,8 +61,6 @@ analyzePkg pkgName = do
   let analyzeModule hs = do
                        cpp <- maybe (return mempty) (const $ Cpp.analyzeModule hs pkgAbsDir parsedCabal) (cppOpt conf)
                        
-                       print cpp
-
                        parsedMdl <- parseModuleFile hs
 
                        -- turn on specific sub analyses based on user-provided conf
