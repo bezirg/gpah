@@ -28,10 +28,7 @@ import Distribution.Package
 
 import System.FilePath
 
-main = maybeRunCpp >> analyze >>= pprint
-
-maybeRunCpp :: IO ()
-maybeRunCpp = when (cppOpt conf) Cpp.runCpp
+main = analyze >>= pprint
 
 analyze :: IO Analysis
 analyze = if hasSubComponent conf -- check for enabled subcomponents, so not to pointlessly traverse the modules
@@ -62,6 +59,10 @@ analyzePkg pkgName = do
   haskellSrcs <- return . concat =<< mapM getHaskellSrcs pkgAbsSrcDirs
 
   let analyzeModule hs = do
+                       cpp <- maybe (return mempty) (const $ Cpp.analyzeModule hs pkgAbsDir parsedCabal) (cppOpt conf)
+                       
+                       print cpp
+
                        parsedMdl <- parseModuleFile hs
 
                        -- turn on specific sub analyses based on user-provided conf
@@ -70,7 +71,7 @@ analyzePkg pkgName = do
                            upl = maybe mempty (const $ Upl.analyzeModule parsedMdl parsedCabal) (uniplateOpt conf)
                            hac = maybe mempty (const $ Hackage.analyzeModule parsedMdl) (hackageOpt conf)
 
-                       evaluate . force $ Analysis der fun upl hac mempty
+                       evaluate . force $ Analysis cpp der fun upl hac mempty
 
   let hac = maybe mempty (const $ Hackage.analyzePackage pkgName parsedCabal) (hackageOpt conf `mplus` dateOpt conf)  -- -t implies -h
   let appendAnalyzeHacPkg a = a { hacAnalysis = hacAnalysis a `mappend` hac }
@@ -80,7 +81,8 @@ analyzePkg pkgName = do
 
 
 pprint :: Analysis -> IO ()
-pprint (Analysis der fun upl hac dte) = do
+pprint (Analysis cpp der fun upl hac dte) = do
+  maybe (return ()) (Cpp.pprint cpp) (cppOpt conf)
   maybe (return ()) (Hackage.pprint hac) (hackageOpt conf)
   maybe (return ()) (Deriving.pprint der) (derivingOpt conf)
   maybe (return ()) (Function.pprint fun) (functionOpt conf)

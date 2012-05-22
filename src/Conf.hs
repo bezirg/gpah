@@ -20,7 +20,7 @@ data Conf = Conf {
     , dateOpt :: Maybe FilePath
     , hackageDirOpt :: FilePath
     , hackageLogOpt :: FilePath
-    , cppOpt :: Bool
+    , cppOpt :: Maybe FilePath
   } deriving (Show, Eq, Data, Typeable)
 
 hasSubComponent :: Conf -> Bool
@@ -36,7 +36,7 @@ confOpt = Conf {
            , dateOpt = def &= explicit  &= name "t" &= name "misc_date" &= opt "./results/misc_date.csv" &= typFile &= help "Get syb+uniplate date info and output it to the specified file (implies --misc_hackage)"
            , hackageDirOpt = def &= explicit  &= name "hackage_dir" &= opt "/tmp/hackage" &= typDir &= help "Set the hackage archive directory"
            , hackageLogOpt = def &= explicit  &= name "hackage_log" &= opt "./hackage.log" &= typFile &= help "Set the hackage archive log file"
-           , cppOpt = def &= explicit &= name "c"  &= name "cpp" &= help "Set this flag to preprocess the hackage and yield an analysis with less failed-to-parse modules"
+           , cppOpt = def &= explicit &= name "c"  &= name "cpp" &= opt "./results/c_analysis.csv" &= typFile &= help "Run preprocessing in hackage that yields an analysis with less failed-to-parse modules"
            } &= summary "HackageAnalysis Experimentation Project v1.0" &= program "run"
 
 
