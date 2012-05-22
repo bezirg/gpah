@@ -10,7 +10,7 @@ type Import  = String
 type FavFunction = String                                     -- Function-name to search for
 type OneLvlUp    = String                                     -- Function one level up from where a match was found
 
-newtype Analysis  = Analysis (M.Map FavFunction Int)
+newtype Analysis  = Analysis (M.Map FavFunction Int) -- wrap it as a newtype, because we want to override Data.Map 's Monoid instance
     deriving (Show)
 
 instance Monoid Analysis where

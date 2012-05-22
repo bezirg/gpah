@@ -46,7 +46,10 @@ data DerivingType = Normal | StandAlone | Overload
 instance NFData DerivingType where
    rnf a = a `seq` ()
 
-deriveableClasses = ["Bounded", "Data", "Enum", "Eq", "Foldable", "Ix", "Ord", "Read", "Show", "Traversable", "Typeable", "Generic"]
+-- haskell98 [Eq, Ord, Enum, Ix Bounded, Show, Read]
+-- ghc   [Data, Typeable, Generic, Functor, Foldable, Traversable]
+
+deriveableClasses = ["Bounded", "Data", "Enum", "Eq", "Functor", "Foldable", "Ix", "Ord", "Read", "Show", "Traversable", "Typeable", "Generic"]
 nonGNDClasses = ["Read", "Show", "Typeable","Data"] -- classes that are not **inherited** when in generalized newtype deriving, but instead derived
 
 derivingName :: Deriving -> String
