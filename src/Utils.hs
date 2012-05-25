@@ -29,6 +29,10 @@ fromBool :: Bool -> Int
 fromBool True = 1
 fromBool False = 0
 
+toBool :: Int -> Bool
+toBool 1 = True
+toBool 0 = False
+
 -- returns the package directory relative to the hackage archive
 -- e.g. hackage/syb/0.3.6/ACTUAL_PKG_DIR
 pkgDir  :: String -> String -> FilePath

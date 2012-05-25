@@ -21,12 +21,13 @@ data Conf = Conf {
     , hackageDirOpt :: FilePath
     , hackageLogOpt :: FilePath
     , cppOpt :: Maybe FilePath
+    , intOpt :: Maybe FilePath
   } deriving (Show, Eq, Data, Typeable)
 
 hasSubComponent :: Conf -> Bool
-hasSubComponent (Conf der fun upl hac dte _ _ _) = 
+hasSubComponent (Conf der fun upl hac dte _ _ cpp int) = 
     maybe False (const True)
-              (der `mplus` fun `mplus` upl `mplus` hac `mplus` dte)
+              (der `mplus` fun `mplus` upl `mplus` hac `mplus` dte `mplus` cpp `mplus` int)
 
 confOpt = Conf {
              derivingOpt = def &= explicit  &= name "d" &= name "deriving" &= opt "./results/d_analysis.csv" &= typFile &= help "Run the deriving analysis and output it to the specified file"
@@ -37,6 +38,7 @@ confOpt = Conf {
            , hackageDirOpt = def &= explicit  &= name "hackage_dir" &= opt "/tmp/hackage" &= typDir &= help "Set the hackage archive directory"
            , hackageLogOpt = def &= explicit  &= name "hackage_log" &= opt "./hackage.log" &= typFile &= help "Set the hackage archive log file"
            , cppOpt = def &= explicit &= name "c"  &= name "cpp" &= opt "./results/c_analysis.csv" &= typFile &= help "Run preprocessing in hackage that yields an analysis with less failed-to-parse modules"
+           , intOpt = def &= explicit &= name "i"  &= name "interpret" &= opt "./results/i_analysis.csv" &= typFile &= help "Do type-checking interpretation on modules that depend on SYB or Uniplate "
            } &= summary "HackageAnalysis Experimentation Project v1.0" &= program "run"
 
 
