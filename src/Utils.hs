@@ -166,10 +166,9 @@ removePragmas s = unlines $ map removePragma (lines s) where
   removePragma xs = xs
 
 
--- Libraries under the "Generics" , "Generic" categories of HackageDB + "syb-with-class"
+-- Libraries under the "Generics" , "Generic" categories of HackageDB + "syb-with-class" + "derive"
 libsGP = ["HsTools",
           "syb-extras",
-          "syb-with-class",
           "alloy",
           "alloy-proxy-fd",
           "Annotations",
@@ -215,6 +214,9 @@ libsGP = ["HsTools",
           "uniplate",
           "xformat",
           "yoko",
-          "zipper"]
+          "zipper",
+          "syb-with-class",
+          "derive"
+         ]
 
 

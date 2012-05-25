@@ -12,6 +12,7 @@ import qualified Date
 import qualified Hackage
 import qualified Upl
 import qualified Interp
+import qualified Derive
 
 import Control.Exception (evaluate)
 import Control.DeepSeq (force)
@@ -58,12 +59,14 @@ analyzePkg pkgName = do
   
   haskellSrcs <- return . concat . zipWith (\ abssrcdir srcs -> zip (repeat abssrcdir) srcs) pkgAbsSrcDirs =<< mapM getHaskellSrcs pkgAbsSrcDirs
 
-  let hacPkg = maybe mempty (const $ Hackage.analyzePackage pkgName parsedCabal) (hackageOpt conf `mplus` dateOpt conf `mplus` intOpt conf)  -- -t or -i, imply -h
+  let hacPkg = maybe mempty (const $ Hackage.analyzePackage pkgName parsedCabal) (hackageOpt conf `mplus` dateOpt conf `mplus` intOpt conf `mplus` dveOpt conf)  -- -t or -i or -e, imply -h
 
   let analyzeModule (pkgAbsSrcDir, hs) = do
                        cpp <- maybe (return mempty) (const $ Cpp.analyzeModule hs pkgAbsDir parsedCabal) (cppOpt conf)
                              
                        int <- maybe (return mempty) (const $ Interp.analyzeModule hs pkgName pkgAbsSrcDir hacPkg) (intOpt conf)
+
+                       dve <- maybe (return mempty) (const $ Derive.analyzeModule hs hacPkg) (dveOpt conf)
 
                        parsedMdl <- parseModuleFile hs
 
@@ -73,7 +76,7 @@ analyzePkg pkgName = do
                            upl = maybe mempty (const $ Upl.analyzeModule parsedMdl parsedCabal) (uniplateOpt conf)
                            hac = maybe mempty (const $ Hackage.analyzeModule parsedMdl) (hackageOpt conf)
                                         
-                       evaluate . force $ Analysis cpp der fun upl hac mempty int
+                       evaluate . force $ Analysis cpp der fun upl hac mempty int dve
 
 
   let appendAnalyzeHacPkg a = a { hacAnalysis = hacAnalysis a `mappend` hacPkg }
@@ -83,7 +86,7 @@ analyzePkg pkgName = do
 
 
 pprint :: Analysis -> IO ()
-pprint (Analysis cpp der fun upl hac dte int) = do
+pprint (Analysis cpp der fun upl hac dte int dve) = do
   maybe (return ()) (Cpp.pprint cpp) (cppOpt conf)
   maybe (return ()) (Hackage.pprint hac) (hackageOpt conf)
   maybe (return ()) (Deriving.pprint der) (derivingOpt conf)
@@ -91,3 +94,4 @@ pprint (Analysis cpp der fun upl hac dte int) = do
   maybe (return ()) (Upl.pprint upl) (uniplateOpt conf)
   maybe (return ()) (Date.pprint dte) (dateOpt conf)
   maybe (return ()) (Interp.pprint int) (intOpt conf)
+  maybe (return ()) (Derive.pprint dve) (dveOpt conf)
