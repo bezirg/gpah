@@ -15,7 +15,9 @@ pprint (Analysis a1 a2 a3 a4 a5 a6 a7) fp = do
            ["StandaloneDeriving", show $ a4],
            ["GeneralizedNewtypeDeriving", show $ a5],
            ["InstancesPreferredToWriteManualThanAutoDerive", show $ a6],
-           ["TopManual", show $ sortBy (flip compare `on` snd) $ M.toList a7]
+           ["TopManual", show $ sortBy (flip compare `on` snd) $ M.toList a7],
+           ["PossibleGenericity (Data+Typeable+Generic) Derived", show $ sum $ map (flip (M.findWithDefault 0) a2) ["Data","Typeable","Generic"]],
+           ["PossibleGenericity (Data+Typeable+Generic) Manual", show $ sum $ map (flip (M.findWithDefault 0) a7) ["Data","Typeable","Generic"]]
           ]
       pCSV = printCSV p
 

@@ -60,6 +60,6 @@ analyzeDecl (InstDecl _ _ derClass typeParams _) = let isDeriveableInstance = qN
                                                      0       -- standalone
                                                      0       -- newtype
                                                      (fromBool isDeriveableInstance)  -- overload
-                                                     (M.singleton (qNameToString derClass) 1)
+                                                     (if isDeriveableInstance then M.singleton (qNameToString derClass) 1 else M.empty)
 
 analyzeDecl _ = mempty
