@@ -31,6 +31,15 @@ analyzeHackageLog contents a =   let hacTime = unwords $ take 6 $ words $ last $
                                      cLog = cleanLog log
                                      pus = M.findWithDefault [] "syb" $ (Hackage.reverseDeps . Base.hacAnalysis) a -- packages that use syb
                                      puu = M.findWithDefault [] "uniplate" $ (Hackage.reverseDeps . Base.hacAnalysis) a -- packages that use uniplate
+                                     pud = M.findWithDefault [] "derive" $ (Hackage.reverseDeps . Base.hacAnalysis) a -- packages that use uniplate
                                  -- construct a new base analysis and adds the date analysis
-                                 in mempty {Base.dteAnalysis = Analysis (yearUpdatesToLib pus cLog) (yearUpdatesToLib puu cLog) (yearNewToLib pus cLog) (yearNewToLib puu cLog) hacTime}
+                                 in mempty {Base.dteAnalysis = Analysis 
+                                                               (yearUpdatesToLib pus cLog) 
+                                                               (yearUpdatesToLib puu cLog) 
+                                                               (yearNewToLib pus cLog) 
+                                                               (yearNewToLib puu cLog) 
+                                                               hacTime
+                                                               (yearUpdatesToLib pud cLog)
+                                                               (yearNewToLib pud cLog)
+                                           }
 
