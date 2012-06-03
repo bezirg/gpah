@@ -66,8 +66,6 @@ analyzePkg pkgName = do
                              
                        int <- maybe (return mempty) (const $ Interp.analyzeModule hs pkgName pkgAbsSrcDir hacPkg) (intOpt conf)
 
-                       dve <- maybe (return mempty) (const $ Derive.analyzeModule hs hacPkg) (dveOpt conf)
-
                        parsedMdl <- parseModuleFile hs
 
                        -- turn on specific sub analyses based on user-provided conf
@@ -75,7 +73,7 @@ analyzePkg pkgName = do
                            fun = maybe mempty (const $ Function.analyzeModule parsedMdl parsedCabal) (functionOpt conf)
                            upl = maybe mempty (const $ Upl.analyzeModule parsedMdl parsedCabal) (uniplateOpt conf)
                            hac = maybe mempty (const $ Hackage.analyzeModule parsedMdl) (hackageOpt conf)
-                                        
+                           dve = maybe mempty (const $ Derive.analyzeModule parsedMdl hacPkg) (dveOpt conf)                 
                        evaluate . force $ Analysis cpp der fun upl hac mempty int dve
 
 

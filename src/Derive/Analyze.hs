@@ -2,24 +2,25 @@ module Derive.Analyze where
 
 import Derive.Base
 import qualified Hackage.Base as Hackage
-import Text.Regex.PCRE
-import Text.Regex.PCRE.String
 import qualified Data.Map as M
 import Data.Monoid
-import Data.List
-import Data.List.Utils (countElem)
-import Data.String.Utils (split, strip)
+import Language.Haskell.Exts.Parser
+import Language.Haskell.Exts.Syntax
+import Generics.SYB
 
-analyzeModule :: FilePath -> Hackage.Analysis -> IO Analysis 
-analyzeModule hs hacPkg | "derive" `elem` (M.keys (Hackage.reverseDeps hacPkg)) = do
-  Right rx <- compile (compMultiline + compDotAll + compUngreedy) execBlank "\\$\\(\\s*derive(.*)\\)"
-  inp <- readFile hs
-  let 
-      process :: String -> [(String, Int)]
-      process s = let s' = strip s
-                  in if (head s') == '['
-                     then map (\ x -> (strip x, 1)) $ split "," $ takeWhile (/= ']') (tail s')
-                     else [(strip (takeWhile (/= '\'') s'), 1)]
-  return $ Analysis $ M.fromListWith (+) $ concatMap (process . head . tail) (match rx inp :: [[String]])
-                        | otherwise = return mempty
 
+analyzeModule :: ParseResult Module -> Hackage.Analysis -> Analysis 
+analyzeModule (ParseOk m) hacPkg | "derive" `elem` (M.keys (Hackage.reverseDeps hacPkg)) = everything (mappend) (mempty `mkQ` thDecl) m
+                                 | otherwise = mempty
+analyzeModule _ _ = mempty
+
+thDecl :: Splice -> Analysis
+thDecl (ParenSplice (App (App (Var (UnQual (Ident "derive"))) (Var (UnQual (Ident class_)))) (TypQuote (UnQual (Ident dt))))) = Analysis $ M.singleton class_ 1
+thDecl (ParenSplice (App (App (Var (UnQual (Ident "derive"))) (Var (UnQual (Ident class_)))) (List dts))) = Analysis $ M.singleton class_ (length dts)
+thDecl (ParenSplice (App (App (Var (UnQual (Ident "derive"))) (List classes_ids)) (TypQuote (UnQual (Ident dt))))) = let classes = map (\ (Var (UnQual (Ident class_))) -> class_) classes_ids
+                                                                                                                    in
+                                                                                                                      Analysis $ M.fromList (zip classes (repeat 1))
+thDecl (ParenSplice (App (App (Var (UnQual (Ident "derive"))) (List classes_ids)) (List dts))) = let classes = map (\ (Var (UnQual (Ident class_))) -> class_) classes_ids
+                                                                                              in
+                                                                                                Analysis $ M.fromList (zip classes (repeat (length dts)))
+thDecl _ = mempty
