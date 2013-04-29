@@ -1,0 +1,147 @@
+"/tmp/hackage/Interpolation/0.2.6.0/Interpolation-0.2.6.0/Data/String/Interpolation.hspp"
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Defs.hspp"
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Helper.hspp"
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Dummies.hspp"
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Nat.hspp"
+WontCompile [GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hs:23:1:\n    Warning: In the use of `typeRepKey'\n             (imported from Data.Typeable):\n             Deprecated: \"TypeRep itself is now an instance of Ord\""},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"}]
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Function.hspp"
+WontCompile [GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hs:23:1:\n    Warning: In the use of `typeRepKey'\n             (imported from Data.Typeable):\n             Deprecated: \"TypeRep itself is now an instance of Ord\""},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"}]
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Set.hspp"
+WontCompile [GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hs:23:1:\n    Warning: In the use of `typeRepKey'\n             (imported from Data.Typeable):\n             Deprecated: \"TypeRep itself is now an instance of Ord\""},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"}]
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hspp"
+WontCompile [GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"}]
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Set/Example.hspp"
+WontCompile [GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hs:23:1:\n    Warning: In the use of `typeRepKey'\n             (imported from Data.Typeable):\n             Deprecated: \"TypeRep itself is now an instance of Ord\""},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"},GhcError {errMsg = "/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10:\n    Duplicate instance declarations:\n      instance [incoherent] Show (a :=: b)\n        -- Defined at /tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Type/Logic.hs:250:10\n      instance Show (a :=: b) -- Defined in `Data.Type.Equality'"}]
+"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hspp"
+UnknownError "GHC returned a result but said: [GhcError {errMsg = \"/tmp/hackage/type-settheory/0.1.3.1/type-settheory-0.1.3.1/Data/Typeable/Extras.hs:23:1:\\n    Warning: In the use of `typeRepKey'\\n             (imported from Data.Typeable):\\n             Deprecated: \\\"TypeRep itself is now an instance of Ord\\\"\"}]"
+"/tmp/hackage/grm/0.1.1/grm-0.1.1/grm.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Paths_grm'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/grm/0.1.1/grm-0.1.1/Grm/Layout.hspp"
+"/tmp/hackage/grm/0.1.1/grm-0.1.1/Grm/Lex.hspp"
+"/tmp/hackage/grm/0.1.1/grm-0.1.1/Grm/Prims.hspp"
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Constraints/Boolean.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Constraints/Boolean.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/Random.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/Random.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/DepthCounter.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/DepthCounter.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/CallTimeChoice.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/CallTimeChoice.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/DepthLimit.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Strategies/DepthLimit.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Types/Bool.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Types/Bool.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Types/List.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Types/List.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/CallTimeChoice.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/CallTimeChoice.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/HigherOrder.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/HigherOrder.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/Boolean.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Tests/Boolean.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Control/Strategy.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Control/Strategy.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Control/Monad/Update.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Control/Monad/Update.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Primitive.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Primitive.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Narrowing.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Narrowing.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/UniqueID.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/UniqueID.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/HigherOrder.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/HigherOrder.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Matching.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Matching.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Types.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Types.hs"}]
+"/tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Generic.hspp"
+WontCompile [GhcError {errMsg = "can't find file: /tmp/hackage/cflp/2009.2.1/cflp-2009.2.1/src/CFLP/Data/Generic.hs"}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Hs2lib.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Paths_Hs2lib'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Hs2lib-debug.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/FindFiles.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/TestRunner.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Test-Regression-Debug.hspp"
+NotAllowed "These modules have not been loaded:\nTests.Test-Regression-Debug\n"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Test-Regression.hspp"
+NotAllowed "These modules have not been loaded:\nTests.Test-Regression\n"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_AdvanceCall.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_SimpleLists.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_Validation.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_AdvancedListCallbacks.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_SimpleTuple.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_ADT.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_SimpleType.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_SimpleCall.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_AdvancedListCall.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_StateDemo.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_Bewijzen.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_AdvancedListTests.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_IO.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Src/Test_Getallen.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Structs.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Example.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/CmdArgs.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Hs2lib-testgen.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Version.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Default.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/Tests/Exec/Analyze.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/EntryPoint.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Paths_Hs2lib'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Identifier.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Builder.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Shared/Remapper.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Version/Debug.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Version/Hs2lib.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Debug/Output.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Debug/Heap.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Debug/Analyzer.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Debug.Stack'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Parsers/Debug.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Parsers/Hs2lib.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/ListTypes.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/Types.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/Processes.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Paths_Hs2lib'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/HaddockRead.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/Feedback.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/TypeFolds.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/Pragma.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/KnownTypes.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Utils/DepScanner.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `DynFlags'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/C.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/Structures.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/Types.hspp"
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/PrettyPrinting.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/CSharp.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/Haskell.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `Module'\nIt is a member of the hidden package `ghc-7.4.1'.\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/MShow/C.hspp"
+WontCompile [GhcError {errMsg = "Could not find module `WinDll.Lib.NativeMapping'\nUse -v to see a list of the files searched for."}]
+"/tmp/hackage/Hs2lib/0.5.6/Hs2lib-0.5.6/WinDll/Structs/MShow/HaskellSrcExts.hspp"
