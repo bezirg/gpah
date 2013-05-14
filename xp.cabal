@@ -11,6 +11,6 @@ cabal-version:         >= 1.8
                       
 executable Run
   main-is:             Main.hs
-  build-depends:       base, cmdargs, haskell-src-exts, filepath, Cabal >= 1.14.0, directory, deepseq, bytestring, iconv, containers >= 0.4.2.0, syb, uniplate, process, csv, hint
+  build-depends:       base, cmdargs, haskell-src-exts, filepath, Cabal == 1.16.0, directory, deepseq, bytestring, containers >= 0.4.2.0, syb, uniplate, process, csv, hint
   ghc-options:         -rtsopts  -with-rtsopts=-K50m
   hs-source-dirs:      src

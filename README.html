@@ -1,12 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <title></title>
-</head>
-<body>
 <h1 id="gp-analysis-of-hackage-readme">GP analysis of Hackage README</h1>
 <p>For the report and documentation of the project, check the file <code>report.pdf</code></p>
 <p>There is also the presentation we gave at the file <code>presentation.pdf</code></p>
@@ -20,7 +11,7 @@
 <pre><code>wget http://hackage.haskell.org/packages/archive/log -O hackage.log
 </code></pre></li>
 <li><p>Download a recent snapshot of Hackage by doing:</p>
-<pre><code>wget http://hackage.haskell.org/cgi-bin/hackage-scripts/archive.tar -O hackage.tar</code></pre></li>
+<pre><code>wget http://hackage.haskell.org/packages/archive/00-archive.tar -O hackage.tar</code></pre></li>
 <li><p>Untar it:</p>
 <pre><code>mkdir hackage
 tar -xf hackage.tar -C hackage/</code></pre></li>
@@ -39,5 +30,3 @@ tar -xf hackage.tar -C hackage/</code></pre></li>
 <p><code>dist/build/Run/Run args</code></p>
 <p>For a detailed description of the accepted arguments run:</p>
 <p><code>dist/build/Run/Run --help</code></p>
-</body>
-</html>

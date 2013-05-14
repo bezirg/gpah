@@ -9,9 +9,8 @@ import Control.Monad (filterM, liftM)
 import Data.Char (isSpace)
 import Language.Haskell.Exts
 
--- for encoding conversion
-import qualified Codec.Text.IConv as IConv
-import qualified Data.ByteString.Lazy.Char8 as B
+import System.IO
+import qualified Data.ByteString.Char8 as B
 
 -- Cabal-related imports
 import Distribution.PackageDescription
@@ -147,9 +146,16 @@ getHaskellSrcs fp = do
 
 parseModuleFile :: FilePath -> IO (ParseResult Module)
 parseModuleFile fp = do
-  -- do iconv
-  contents <-  fmap (B.unpack . IConv.convertFuzzy IConv.Discard "UTF-8" "UTF-8") (B.readFile fp)
-  
+
+  h <- openFile fp ReadMode
+
+  te <- mkTextEncoding "UTF-8//IGNORE"
+  hSetEncoding h te
+
+  contents <-  return . B.unpack =<< B.hGetContents h
+
+  hClose h
+
   -- remove pragmas
   let clearedContents = removePragmas contents
 

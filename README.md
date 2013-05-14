@@ -25,7 +25,7 @@ make get-hackage
 * Download a recent snapshot of Hackage by doing:
 
     ~~~
-   	wget http://hackage.haskell.org/cgi-bin/hackage-scripts/archive.tar -O hackage.tar
+   	wget http://hackage.haskell.org/packages/archive/00-archive.tar -O hackage.tar
     ~~~
 
 * Untar it:
