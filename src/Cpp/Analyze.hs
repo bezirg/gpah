@@ -11,6 +11,6 @@ analyzeModule :: FilePath -> FilePath -> GenericPackageDescription -> IO Analysi
 analyzeModule fp pkgAbsDir cabal = do
   let cmd = (shell 
              (printf "ghc -cpp -E -optP-P %s %s -Wwarn %s" (cppOpts cabal) (ghcOpts cabal) fp)
-            ) {cwd = Just pkgAbsDir}
+            ) -- {cwd = Just pkgAbsDir}
   exitCode <- createProcess cmd >>= \ (_,_,_,ph) -> waitForProcess ph
   return $ if exitCode == ExitSuccess then [] else [fp]

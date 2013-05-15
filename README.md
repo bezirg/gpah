@@ -49,7 +49,7 @@ make
 
 ## Before running
 
-- Remove `hackage/hsc3/0.11/hsc3-0.11/Help` directory
+- Remove `hackage/hsc3/0.14/hsc3-0.14/Help` directory
 
 - (optional) To make the analysis run in-memory (faster and less disk-intensive),
   do `cp -r ./hackage/ /tmp` . This command will copy the hackage archive
