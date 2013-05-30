@@ -3,6 +3,7 @@ module Upl.Analyze where
 import Upl.Base
 import Utils
 import Language.Haskell.Exts
+import Language.Haskell.Exts.Comments
 import qualified Data.Map as M
 import Hackage.Analyze
 
@@ -24,8 +25,8 @@ analyseImports is = if isMixed is
                       analyseImports' [] = Nothing
 
 
-analyzeModule :: ParseResult Module -> GenericPackageDescription -> Analysis
-analyzeModule (ParseOk (Module (SrcLoc {srcFilename = fn}) _ _ _ _ imports _)) gpkgdesc =
+analyzeModule :: ParseResult (Module, [Comment]) -> GenericPackageDescription -> Analysis
+analyzeModule (ParseOk ((Module (SrcLoc {srcFilename = fn}) _ _ _ _ imports _),_)) gpkgdesc =
     if "uniplate" `elem` cabalDepends gpkgdesc -- if has uniplate as dep
     then Analysis $ maybe M.empty (\ s -> M.singleton s [fn]) $  analyseImports imports
     else mempty

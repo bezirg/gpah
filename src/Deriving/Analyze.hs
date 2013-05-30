@@ -4,14 +4,15 @@ module Deriving.Analyze where
 import Deriving.Base
 import Utils
 import Language.Haskell.Exts
+import Language.Haskell.Exts.Comments
 import qualified Data.Map as M
 
 import Data.List
 
 import Data.Monoid
 
-analyzeModule :: ParseResult Module -> Analysis
-analyzeModule (ParseOk (Module _ _ _ _ _ _ decls)) = foldr (\ decl acc -> analyzeDecl decl `mappend` acc) mempty decls
+analyzeModule :: ParseResult (Module, [Comment]) -> Analysis
+analyzeModule (ParseOk ((Module _ _ _ _ _ _ decls),_)) = foldr (\ decl acc -> analyzeDecl decl `mappend` acc) mempty decls
 analyzeModule _ = mempty
 
 analyzeDecl :: Decl -> Analysis

@@ -8,13 +8,15 @@ import Data.Function
 import Data.List
 
 pprint :: Analysis -> FilePath -> IO ()
-pprint (Analysis a1) fp = do
-  let p = [["NumberOfDirectives", show $ M.foldl (+) 0 a1]
-          ,["TopDirectives", show $ sortBy (flip compare `on` snd) $ M.toList a1]
+pprint (Analysis a1 a2 a3 a4) fp = do
+  let p = [["DeriveTemplateHaskellDirectives", show $ sortBy (flip compare `on` snd) $ M.toList a1]
+          ,["DerivePreprocessingDirectives",  show $ sortBy (flip compare `on` snd) $ M.toList a2]
+          ,["DrIFTNormalDirectives",  show $ sortBy (flip compare `on` snd) $ M.toList a3]
+          ,["DrIFTGlobalDirectives",  show $ sortBy (flip compare `on` snd) $ M.toList a4]                                                                    
           ]
       pCSV = printCSV p
 
   writeFile fp pCSV
 
-  putStrLn "Derive Results:\n###############"
+  putStrLn "Derive+DrIFT Results:\n###############"
   putStrLn pCSV

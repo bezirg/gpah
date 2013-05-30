@@ -3,6 +3,7 @@ module Function.Analyze where
 import Function.Base
 import Utils
 import Language.Haskell.Exts
+import Language.Haskell.Exts.Comments
 import Hackage.Analyze
 
 -- Cabal-related imports
@@ -35,8 +36,8 @@ collectOccs :: Module -> FavFunction -> Int
 collectOccs m n = everything (+) (0 `mkQ` findN n) m
 
 -- | executes the function analysis on a given module
-analyzeModule :: ParseResult Module -> GenericPackageDescription -> Analysis
-analyzeModule (ParseOk modul@(Module sloc _ _ _ _ _ _)) gpkgdesc =   
+analyzeModule :: ParseResult (Module, [Comment]) -> GenericPackageDescription -> Analysis
+analyzeModule (ParseOk (modul@(Module sloc _ _ _ _ _ _),_)) gpkgdesc =   
     let toSearch = L.nub $ constructSearchList {-(getImportNames modul)-} favorites
         ds = cabalDepends gpkgdesc
     in if "uniplate" `elem` ds || "syb" `elem` ds -- if uniplate or syb as dep

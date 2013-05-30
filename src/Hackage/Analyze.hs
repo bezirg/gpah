@@ -9,10 +9,11 @@ import Data.Monoid
 
 
 import Language.Haskell.Exts
+import Language.Haskell.Exts.Comments
 import Distribution.PackageDescription
 import Distribution.Package
 
-analyzeModule :: ParseResult Module -> Analysis
+analyzeModule :: ParseResult (Module, [Comment]) -> Analysis
 analyzeModule (ParseOk _) = mempty {parsedModules=1}
 analyzeModule (ParseFailed (SrcLoc {srcFilename = hs}) _) = mempty {failedModules = [hs]}
 

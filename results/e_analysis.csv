@@ -1,0 +1,4 @@
+"DeriveTemplateHaskellDirectives","[(""makeBinary"",175),(""makeNFData"",86),(""smartConstructors"",39),(""liftSum"",30),(""makeFoldable"",20),(""makeHDifunctor"",17),(""makeDifunctor"",15),(""makeEqD"",15),(""makeShowD"",15),(""makeFunctor"",12),(""makeOrdD"",9),(""makeTraversable"",9),(""makeShowF"",8),(""makeDitraversable"",6),(""makeSerialize"",6),(""makeEqF"",5),(""makeEqHD"",5),(""makeShowHD"",5),(""smartAConstructors"",4),(""makeNFDataF"",3),(""makeZippable"",3),(""makeArbitrary"",2),(""makeArbitraryF"",2),(""makeMonoid"",2),(""makeRead"",2),(""makeEqHF"",1),(""makeHFoldable"",1),(""makeHFunctor"",1),(""makeHTraversable"",1),(""makeLazySet"",1),(""makeOrd"",1),(""makeOrdF"",1),(""makeOrdHF"",1),(""makeShowHF"",1)]"
+"DerivePreprocessingDirectives","[(""NFData"",14)]"
+"DrIFTNormalDirectives","[(""Binary"",47),(""update"",13),(""Monoid"",9),(""is"",9),(""test"",2),(""from"",1)]"
+"DrIFTGlobalDirectives","[(""GhcBinary"",1)]"

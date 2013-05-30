@@ -8,6 +8,7 @@ import Data.List
 import Control.Monad (filterM, liftM)
 import Data.Char (isSpace)
 import Language.Haskell.Exts
+import Language.Haskell.Exts.Comments
 
 import System.IO
 import qualified Data.ByteString.Char8 as B
@@ -144,7 +145,7 @@ getHaskellSrcs fp = do
     return []
 
 
-parseModuleFile :: FilePath -> IO (ParseResult Module)
+parseModuleFile :: FilePath -> IO (ParseResult (Module, [Comment]))
 parseModuleFile fp = do
 
   h <- openFile fp ReadMode
@@ -163,7 +164,7 @@ parseModuleFile fp = do
   let parseMode = defaultParseMode { parseFilename = fp
                                    , extensions = knownExtensions -- support extensions
                                    , fixities = Nothing }         -- no infix operators
-  return $ parseFileContentsWithMode parseMode clearedContents
+  return $ parseFileContentsWithComments parseMode clearedContents
 
 
 removePragmas :: String -> String

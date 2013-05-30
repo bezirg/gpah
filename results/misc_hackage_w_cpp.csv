@@ -1,8 +1,0 @@
-"TotalNumberOfPackagesInHackage","5129"
-"SuccessfullyParsedModules","40561"
-"FailedToParseModules","5519"
-"PackagesUsingGP","272"
-"PackagesUsingGPwithAnExe","110"
-"PackagesUsingSyb","137"
-"PackagesUsingUniplate","43"
-"ReverseDeps","[(""syb"",137),(""derive"",45),(""uniplate"",43),(""ListLike"",22),(""syb-with-class"",9),(""regular"",8),(""generic-deriving"",7),(""instant-generics"",5),(""multirec"",5),(""pointless-haskell"",5),(""listlike-instances"",3),(""HsTools"",2),(""geniplate"",2),(""multiplate"",2),(""pointless-lenses"",2),(""GenericPretty"",1),(""RepLib"",1),(""alloy"",1),(""multiplate-simplified"",1),(""pointless-rewrite"",1),(""syz"",1),(""unbound"",1),(""xformat"",1)]"
