@@ -173,9 +173,10 @@ removePragmas s = unlines $ map removePragma (lines s) where
   removePragma xs = xs
 
 
--- Libraries under the "Generics" , "Generic" categories of HackageDB + "syb-with-class" + "derive"
+-- Libraries under the "Generics" , "Generic" categories of HackageDB + "syb-with-class" + "derive" + "DrIFT-cabalized"
 libsGP = ["HsTools",
           "syb-extras",
+          "algebraic-classes",
           "alloy",
           "alloy-proxy-fd",
           "Annotations",
@@ -203,9 +204,11 @@ libsGP = ["HsTools",
           "multirec",
           "multirec-alt-deriver",
           "multirec-binary",
+          "one-liner",
           "pointless-haskell",
           "pointless-lenses",
           "pointless-rewrite",
+          "putlenses",
           "regular",
           "regular-extras",
           "regular-web",
@@ -213,9 +216,11 @@ libsGP = ["HsTools",
           "rewriting",
           "special-functors",
           "spine",
+          "Strafunski-StrategyLib",
           "StrategyLib",
           "syb",
           "syz",
+          "TYB",
           "unbound",
           "unfoldable",
           "uniplate",
@@ -223,7 +228,8 @@ libsGP = ["HsTools",
           "yoko",
           "zipper",
           "syb-with-class",
-          "derive"
+          "derive",
+          "DrIFT-cabalized"
          ]
 
 
