@@ -60,8 +60,8 @@ make
 
 After building the program, run it with
 
-`dist/build/Run/Run args`
+`dist/build/gpanalysis/gpanalysis args`
 
 For a detailed description of the accepted arguments run:
 
-`dist/build/Run/Run --help`
+`dist/build/gpanalysis/ --help`

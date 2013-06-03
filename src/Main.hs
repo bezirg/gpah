@@ -19,7 +19,7 @@ import Control.DeepSeq (force)
 
 import Control.Monad 
 import Data.Monoid
-
+import System.IO
     
 -- Cabal-related imports
 import Distribution.PackageDescription
@@ -29,10 +29,33 @@ import Distribution.Package
 
 import System.FilePath
 
-main = analyze >>= pprint
+main = tryFetch >> analyze >>= pprint
+
+tryFetch :: IO ()
+tryFetch = when (fetchOpt conf) $ do
+  print "Fetching the Hackage activity log..."
+  log <- downloadURL "http://hackage.haskell.org/packages/archive/log"
+  case log of
+    Right res -> do
+             file <- openBinaryFile (hackageLogOpt conf) WriteMode
+             hPutStr file res
+             hClose file
+    Left x -> print x
+  print "Fetching the Hackage archive tarball..."
+  tar <- downloadURL "http://hackage.haskell.org/packages/archive/00-archive.tar"
+  case tar of
+    Right res -> do
+             file <- openBinaryFile (hackageDirOpt conf) WriteMode
+             hPutStr file res
+             hClose file
+    Left x -> print x
+    
+  print "Done Fetching"
 
 analyze :: IO Analysis
-analyze = if hasSubComponent conf -- check for enabled subcomponents, so not to pointlessly traverse the modules
+analyze = do
+    print "Running the analysis"
+    if hasSubComponent conf -- check for enabled subcomponents, so not to pointlessly traverse the modules
           then (getHackagePkgsNames >>= mapM analyzePkg >>= return . mconcat >>= appendAnalyzeDate)
           else return mempty
 
