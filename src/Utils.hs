@@ -44,8 +44,12 @@ pkgDir pkg vsn = hackageDirOpt conf </> pkg </>  vsn </> pkg ++ "-" ++ vsn
 pkgCabal :: FilePath -> FilePath -> FilePath
 pkgCabal pkg vsn = pkgDir pkg vsn </> pkg ++ ".cabal"
 
+-- ignore package hsc3, because of error:
+-- gpanalysis.exe: In file hackage\hsc3\0.14\hsc3-0.14\Help\UGen\Panner\splay.help.lhs at line 1: program line before comment line.
+-- 
 getHackagePkgsNames :: IO [String]
-getHackagePkgsNames = getSubDirs (hackageDirOpt conf)
+getHackagePkgsNames = liftM (delete "hsc3") $ getSubDirs (hackageDirOpt conf)
+
 
 getPkgVersion :: String -> IO String
 getPkgVersion pkgName = liftM head $ getSubDirs (hackageDirOpt conf </> pkgName)

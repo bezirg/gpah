@@ -14,7 +14,7 @@ import qualified Upl
 import qualified Interp
 import qualified Derive
 
-import Control.Exception (evaluate)
+import Control.Exception (catch, SomeException (..), evaluate)
 import Control.DeepSeq (force)
 
 import Control.Monad 
@@ -28,35 +28,57 @@ import Distribution.Verbosity (silent)
 import Distribution.Package
 
 import System.FilePath
+import System.Directory (removeDirectoryRecursive)
+
+-- for doing the python job
+import qualified Codec.Archive.Tar as Tar
+import qualified Codec.Compression.GZip as GZip
+import qualified Data.ByteString.Lazy.Char8 as BS
 
 main = tryFetch >> analyze >>= pprint
 
 tryFetch :: IO ()
 tryFetch = when (fetchOpt conf) $ do
-  print "Fetching the Hackage activity log..."
   log <- downloadURL "http://hackage.haskell.org/packages/archive/log"
   case log of
     Right res -> do
+             -- Write the hackage log
              file <- openBinaryFile (hackageLogOpt conf) WriteMode
              hPutStr file res
              hClose file
-    Left x -> print x
-  print "Fetching the Hackage archive tarball..."
+    Left x -> error x
   tar <- downloadURL "http://hackage.haskell.org/packages/archive/00-archive.tar"
   case tar of
     Right res -> do
-             file <- openBinaryFile (hackageDirOpt conf) WriteMode
-             hPutStr file res
-             hClose file
-    Left x -> print x
+             -- Unpack the hackage archive tar
+             Tar.unpack (hackageDirOpt conf) $ Tar.read $ BS.pack res
+             -- Unpack each package in the hackage dir
+             pkgNames <- getHackagePkgsNames
+
+             mapM_ (\ pkgName -> do
+                     pkgVersion <- getPkgVersion pkgName
+                     let fp = (hackageDirOpt conf </> pkgName </> pkgVersion)
+                     catch (do
+                             h <- openBinaryFile  (fp </> (pkgName ++ "-" ++ pkgVersion) <.> "tar.gz") ReadMode
+                             c <- BS.hGetContents h
+                             catch (Tar.unpack fp  (Tar.read ( GZip.decompress c)) >> hClose h)
+                                       (\ (SomeException _) -> do
+                                          hClose h
+                                          removeDirectoryRecursive (hackageDirOpt conf </> pkgName)
+                                       )
+                           )
+                            (\ (SomeException _) ->
+                                removeDirectoryRecursive (hackageDirOpt conf </> pkgName)
+                            )
+                   ) pkgNames
+
+    Left x -> error x
     
-  print "Done Fetching"
+  print "Done Fetching & Unpacking"
 
 analyze :: IO Analysis
-analyze = do
-    print "Running the analysis"
-    if hasSubComponent conf -- check for enabled subcomponents, so not to pointlessly traverse the modules
-          then (getHackagePkgsNames >>= mapM analyzePkg >>= return . mconcat >>= appendAnalyzeDate)
+analyze = if hasSubComponent conf -- check for enabled subcomponents, so not to pointlessly traverse the modules
+          then (print "Running the analysis" >> getHackagePkgsNames >>= mapM analyzePkg >>= return . mconcat >>= appendAnalyzeDate)
           else return mempty
 
 appendAnalyzeDate :: Analysis -> IO Analysis

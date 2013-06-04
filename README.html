@@ -1,32 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+</head>
+<body>
 <h1 id="gp-analysis-of-hackage-readme">GP analysis of Hackage README</h1>
 <p>For the report and documentation of the project, check the file <code>report.pdf</code></p>
 <p>There is also the presentation we gave at the file <code>presentation.pdf</code></p>
-<h2 id="getting-the-hackage-repository">Getting the Hackage repository</h2>
-<h3 id="the-easy-way">The easy way:</h3>
-<pre><code>make get-hackage</code></pre>
-<h3 id="the-hard-way">The hard way:</h3>
-<ul>
-<li>Open up a terminal and go in the root directory of this project.</li>
-<li><p>Download the Hackage log:</p>
-<pre><code>wget http://hackage.haskell.org/packages/archive/log -O hackage.log
-</code></pre></li>
-<li><p>Download a recent snapshot of Hackage by doing:</p>
-<pre><code>wget http://hackage.haskell.org/packages/archive/00-archive.tar -O hackage.tar</code></pre></li>
-<li><p>Untar it:</p>
-<pre><code>mkdir hackage
-tar -xf hackage.tar -C hackage/</code></pre></li>
-<li><p>Run the script to extract each package:</p>
-<pre><code>python hackage.py hackage</code></pre></li>
-</ul>
-<h2 id="compiling-the-source-code">Compiling the source code</h2>
-<pre><code>make</code></pre>
-<h2 id="before-running">Before running</h2>
-<ul>
-<li><p>Remove <code>hackage/hsc3/0.14/hsc3-0.14/Help</code> directory</p></li>
-<li><p>(optional) To make the analysis run in-memory (faster and less disk-intensive), do <code>cp -r ./hackage/ /tmp</code> . This command will copy the hackage archive to RAM, providing you have enough memory allocated to <code>tmpfs</code>.</p></li>
-</ul>
-<h2 id="running-the-program">Running the program</h2>
+<h2 id="building">Building</h2>
+<pre><code>runghc Setup.lhs configure
+runghc Setup.lhs build
+runghc Setup.lhs install</code></pre>
+<h1 id="before-running">Before running</h1>
+<p>You have to fetch the the entire hackage repository and its activity log. You can automatically do that with:</p>
+<pre><code>gpanalysis --fetch</code></pre>
+<h2 id="running-the-analysis">Running the analysis</h2>
 <p>After building the program, run it with</p>
-<p><code>dist/build/Run/Run args</code></p>
+<p><code>gpanalysis args</code></p>
+<pre><code>HackageAnalysis Experimentation Project v0.0.1
+
+gpanalysis [OPTIONS]
+
+Common flags:
+     --fetch                Fetch the Hackage archive tarball and Hackage
+                            activity log
+  -d --deriving[=FILE]      Run the deriving analysis and output it to the
+                            specified file
+  -f --function[=FILE]      Run the function analysis and output it to the
+                            specified file
+  -u --uniplate[=FILE]      Run the uniplate analysis and output it to the
+                            specified file
+  -h --misc_hackage[=FILE]  Print general analysis info or output it to the
+                            specified file
+  -t --misc_date[=FILE]     Get syb+uniplate date info and output it to the
+                            specified file (implies --misc_hackage)
+     --hackage-dir=DIR      Set the hackage archive directory
+     --hackage-log=FILE     Set the hackage archive log file
+  -c --cpp[=FILE]           Run preprocessing in hackage that yields an
+                            analysis with less failed-to-parse modules
+  -i --interpret[=FILE]     Do type-checking interpretation on modules that
+                            depend on SYB or Uniplate
+  -e --derive[=FILE]        Do analysis on packages that build on derive
+  -? --help                 Display help message
+  -V --version              Print version information</code></pre>
 <p>For a detailed description of the accepted arguments run:</p>
-<p><code>dist/build/Run/Run --help</code></p>
+<p><code>gpanalysis --help</code></p>
+</body>
+</html>

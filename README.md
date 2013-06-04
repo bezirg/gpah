@@ -4,64 +4,59 @@ For the report and documentation of the project, check the file `report.pdf`
 
 There is also the presentation we gave at the file `presentation.pdf`
 
-## Getting the Hackage repository
-
-### The easy way:
+## Building
 
 ~~~
-make get-hackage
+runghc Setup.lhs configure
+runghc Setup.lhs build
+runghc Setup.lhs install
 ~~~
 
-### The hard way:
 
-* Open up a terminal and go in the root directory of this project.
-* Download the Hackage log:
+# Before running
 
-    ~~~
-    wget http://hackage.haskell.org/packages/archive/log -O hackage.log
-
-    ~~~
-
-* Download a recent snapshot of Hackage by doing:
-
-    ~~~
-   	wget http://hackage.haskell.org/packages/archive/00-archive.tar -O hackage.tar
-    ~~~
-
-* Untar it:
-
-    ~~~
-    mkdir hackage
-	tar -xf hackage.tar -C hackage/
-    ~~~
-
-* Run the script to extract each package:
-
-    ~~~
-    python hackage.py hackage
-    ~~~
-
-## Compiling the source code
+You have to fetch the the entire hackage repository and its activity log. You can automatically do that with:
 
 ~~~
-make
+gpanalysis --fetch
 ~~~
 
-## Before running
 
-- Remove `hackage/hsc3/0.14/hsc3-0.14/Help` directory
-
-- (optional) To make the analysis run in-memory (faster and less disk-intensive),
-  do `cp -r ./hackage/ /tmp` . This command will copy the hackage archive
-  to RAM, providing you have enough memory allocated to `tmpfs`.
-
-
-## Running the program
+## Running the analysis
 
 After building the program, run it with
 
-`dist/build/gpanalysis/gpanalysis args`
+`gpanalysis args`
+
+~~~
+HackageAnalysis Experimentation Project v0.0.1
+
+gpanalysis [OPTIONS]
+
+Common flags:
+     --fetch                Fetch the Hackage archive tarball and Hackage
+                            activity log
+  -d --deriving[=FILE]      Run the deriving analysis and output it to the
+                            specified file
+  -f --function[=FILE]      Run the function analysis and output it to the
+                            specified file
+  -u --uniplate[=FILE]      Run the uniplate analysis and output it to the
+                            specified file
+  -h --misc_hackage[=FILE]  Print general analysis info or output it to the
+                            specified file
+  -t --misc_date[=FILE]     Get syb+uniplate date info and output it to the
+                            specified file (implies --misc_hackage)
+     --hackage-dir=DIR      Set the hackage archive directory
+     --hackage-log=FILE     Set the hackage archive log file
+  -c --cpp[=FILE]           Run preprocessing in hackage that yields an
+                            analysis with less failed-to-parse modules
+  -i --interpret[=FILE]     Do type-checking interpretation on modules that
+                            depend on SYB or Uniplate
+  -e --derive[=FILE]        Do analysis on packages that build on derive
+  -? --help                 Display help message
+  -V --version              Print version information
+~~~
 
 For a detailed description of the accepted arguments run:
 
-`dist/build/gpanalysis/ --help`
+`gpanalysis --help`
