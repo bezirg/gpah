@@ -18,7 +18,7 @@ runghc Setup.lhs install
 You have to fetch the the entire hackage repository and its activity log. You can automatically do that with:
 
 ~~~
-gpanalysis --fetch
+gpah --fetch
 ~~~
 
 
@@ -26,12 +26,12 @@ gpanalysis --fetch
 
 After building the program, run it with
 
-`gpanalysis args`
+`gpah args`
 
 ~~~
 HackageAnalysis Experimentation Project v0.0.1
 
-gpanalysis [OPTIONS]
+gpah [OPTIONS]
 
 Common flags:
      --fetch                Fetch the Hackage archive tarball and Hackage
@@ -59,4 +59,4 @@ Common flags:
 
 For a detailed description of the accepted arguments run:
 
-`gpanalysis --help`
+`gpah --help`
