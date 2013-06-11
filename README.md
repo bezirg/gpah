@@ -29,7 +29,7 @@ After building the program, run it with
 `gpah args`
 
 ~~~
-HackageAnalysis Experimentation Project v0.0.1
+Generic Programming Use in Hackage Project v0.0.1
 
 gpah [OPTIONS]
 

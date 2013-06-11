@@ -43,6 +43,6 @@ confOpt = Conf {
            , cppOpt = def &= explicit &= name "c"  &= name "cpp" &= opt "c_analysis.csv" &= typFile &= help "Run preprocessing in hackage that yields an analysis with less failed-to-parse modules"
            , intOpt = def &= explicit &= name "i"  &= name "interpret" &= opt "i_analysis.csv" &= typFile &= help "Do type-checking interpretation on modules that depend on SYB or Uniplate "
            , dveOpt = def &= explicit &= name "e"  &= name "derive" &= opt "e_analysis.csv" &= typFile &= help "Do analysis on packages that build on derive"
-           } &= summary "HackageAnalysis Experimentation Project v0.0.1" &= program "gpanalysis"
+           } &= summary "Generic Programming Use in Hackage Project v0.0.1" &= program "gpah"
 
 

@@ -16,13 +16,13 @@ runghc Setup.lhs build
 runghc Setup.lhs install</code></pre>
 <h1 id="before-running">Before running</h1>
 <p>You have to fetch the the entire hackage repository and its activity log. You can automatically do that with:</p>
-<pre><code>gpanalysis --fetch</code></pre>
+<pre><code>gpah --fetch</code></pre>
 <h2 id="running-the-analysis">Running the analysis</h2>
 <p>After building the program, run it with</p>
-<p><code>gpanalysis args</code></p>
-<pre><code>HackageAnalysis Experimentation Project v0.0.1
+<p><code>gpah args</code></p>
+<pre><code>Generic Programming Use in Hackage Project v0.0.1
 
-gpanalysis [OPTIONS]
+gpah [OPTIONS]
 
 Common flags:
      --fetch                Fetch the Hackage archive tarball and Hackage
@@ -47,6 +47,6 @@ Common flags:
   -? --help                 Display help message
   -V --version              Print version information</code></pre>
 <p>For a detailed description of the accepted arguments run:</p>
-<p><code>gpanalysis --help</code></p>
+<p><code>gpah --help</code></p>
 </body>
 </html>
