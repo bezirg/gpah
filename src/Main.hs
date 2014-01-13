@@ -114,7 +114,7 @@ analyzePkg pkgName = do
                        parseRes <- parseModuleFile hs
 
                        -- turn on specific sub analyses based on user-provided conf
-                       let der = maybe mempty (const $ Deriving.analyzeModule parseRes) (derivingOpt conf)
+                       let der = maybe mempty (const $ Deriving.analyzeModule hs parseRes) (derivingOpt conf)
                            fun = maybe mempty (const $ Function.analyzeModule parseRes parsedCabal) (functionOpt conf)
                            upl = maybe mempty (const $ Upl.analyzeModule parseRes parsedCabal) (uniplateOpt conf)
                            hac = maybe mempty (const $ Hackage.analyzeModule parseRes) (hackageOpt conf)

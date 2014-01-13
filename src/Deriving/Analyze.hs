@@ -11,18 +11,18 @@ import Data.List
 
 import Data.Monoid
 
-analyzeModule :: ParseResult (Module, [Comment]) -> Analysis
-analyzeModule (ParseOk ((Module _ _ _ _ _ _ decls),_)) = foldr (\ decl acc -> analyzeDecl decl `mappend` acc) mempty decls
-analyzeModule _ = mempty
+analyzeModule :: FilePath -> ParseResult (Module, [Comment]) -> Analysis
+analyzeModule hs (ParseOk ((Module _ _ _ _ _ _ decls),_)) = foldr (\ decl acc -> analyzeDecl hs decl `mappend` acc) mempty decls
+analyzeModule _ _ = mempty
 
-analyzeDecl :: Decl -> Analysis
+analyzeDecl :: FilePath -> Decl -> Analysis
 
 -- NORMAL
 ---------
 
 -- data
-analyzeDecl (DataDecl _ DataType _ _ name _ ds) = let lds = length ds 
-                                                      nds = map derivingName ds
+analyzeDecl _ (DataDecl _ DataType _ _ name _ ds) = let lds = length ds 
+                                                        nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , normalStruct = 1
@@ -35,8 +35,8 @@ analyzeDecl (DataDecl _ DataType _ _ name _ ds) = let lds = length ds
 -- ok
 
 -- newtype
-analyzeDecl (DataDecl _ NewType _ _ name _ ds) = let lds = length ds 
-                                                     nds = map derivingName ds
+analyzeDecl _ (DataDecl _ NewType _ _ name _ ds) = let lds = length ds 
+                                                       nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , normalStruct = 1
@@ -55,8 +55,8 @@ analyzeDecl (DataDecl _ NewType _ _ name _ ds) = let lds = length ds
 -------
 
 -- data
-analyzeDecl (GDataDecl _ DataType _ name _ _ _ ds) = let lds = length ds 
-                                                         nds = map derivingName ds
+analyzeDecl _ (GDataDecl _ DataType _ name _ _ _ ds) = let lds = length ds 
+                                                           nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , gadtStruct = 1
@@ -70,8 +70,8 @@ analyzeDecl (GDataDecl _ DataType _ name _ _ _ ds) = let lds = length ds
 -- ok
 
 -- newtype
-analyzeDecl (GDataDecl _ NewType _ name _ _ _ ds) = let lds = length ds 
-                                                        nds = map derivingName ds
+analyzeDecl _ (GDataDecl _ NewType _ name _ _ _ ds) = let lds = length ds 
+                                                          nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , gadtStruct = 1
@@ -89,8 +89,8 @@ analyzeDecl (GDataDecl _ NewType _ name _ _ _ ds) = let lds = length ds
 ------------
 
 -- data
-analyzeDecl (DataInsDecl _ DataType _  _ ds) = let lds = length ds 
-                                                   nds = map derivingName ds
+analyzeDecl _ (DataInsDecl _ DataType _  _ ds) = let lds = length ds 
+                                                     nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , famStruct = 1
@@ -106,8 +106,8 @@ analyzeDecl (DataInsDecl _ DataType _  _ ds) = let lds = length ds
 -- ok
 
 -- newtype
-analyzeDecl (DataInsDecl _ NewType _  _ ds) = let lds = length ds 
-                                                  nds = map derivingName ds
+analyzeDecl _ (DataInsDecl _ NewType _  _ ds) = let lds = length ds 
+                                                    nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , famStruct = 1
@@ -126,8 +126,8 @@ analyzeDecl (DataInsDecl _ NewType _  _ ds) = let lds = length ds
 ----------------
 
 -- data
-analyzeDecl (GDataInsDecl _ DataType typeParams _ _ ds) = let lds = length ds 
-                                                              nds = map derivingName ds
+analyzeDecl _ (GDataInsDecl _ DataType typeParams _ _ ds) = let lds = length ds 
+                                                                nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , gadtFamStruct = 1
@@ -143,8 +143,8 @@ analyzeDecl (GDataInsDecl _ DataType typeParams _ _ ds) = let lds = length ds
 -- ok
 
 -- newtype
-analyzeDecl (GDataInsDecl _ NewType typeParams _ _ ds) = let lds = length ds 
-                                                             nds = map derivingName ds
+analyzeDecl _ (GDataInsDecl _ NewType typeParams _ _ ds) = let lds = length ds 
+                                                               nds = map derivingName ds
                                                    in mempty {
                                                             sizeStruct = 1
                                                           , gadtFamStruct = 1
@@ -160,15 +160,18 @@ analyzeDecl (GDataInsDecl _ NewType typeParams _ _ ds) = let lds = length ds
 -- ok
 
 -- standalone deriving
-analyzeDecl (DerivDecl _ _ derClass typeParams) = mempty { stdAloneDecl = 1}
+analyzeDecl _ (DerivDecl _ _ derClass typeParams) = mempty { stdAloneDecl = 1}
 
-analyzeDecl (InstDecl _ _ derClass typeParams _) = let isDeriveableInstance = qNameToString derClass `elem` deriveableClasses
+analyzeDecl hs (InstDecl _ _ derClass typeParams _) = let isDeriveableInstance = qNameToString derClass `elem` deriveableClasses
                                                    in mempty {
                                                             sizeInst = 1
                                                           , overloadInst = fromBool isDeriveableInstance
                                                           , topOverload = if isDeriveableInstance 
                                                                           then M.singleton (qNameToString derClass) 1 
                                                                           else M.empty
+                                                          , dtgOverloadModules = if (qNameToString derClass) == "Data" || (qNameToString derClass) == "Typeable" || (qNameToString derClass) == "Generic"
+                                                                                     then [hs]
+                                                                                     else []
                                                           }
                                                                       
-analyzeDecl _ = mempty
+analyzeDecl _ _ = mempty

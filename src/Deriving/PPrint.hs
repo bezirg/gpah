@@ -8,7 +8,7 @@ import Data.Function
 import Data.List
 
 pprint :: Analysis -> FilePath -> IO ()
-pprint (Analysis a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23) fp = do
+pprint (Analysis a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24) fp = do
   let p = [["NumberOfDataStructures (Normal+GADT+FamStruct+GADTFamStruct)", show a1],
            ["NormalStructures", show a2],
            ["GadtStructures", show a3],
@@ -32,6 +32,7 @@ pprint (Analysis a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 
            ["InstancesChecked", show a21],
            ["InstancesPreferredToWriteManualThanAutoDerive", show $ a22],
            ["TopManual", show $ sortBy (flip compare `on` snd) $ M.toList a23],
+           ["DataTypeableGenericManualModules", show $ nub a24],
            ["PossibleGenericity (Data+Typeable+Generic) Derived", show $ sum $ map (flip (M.findWithDefault 0) a20) ["Data","Typeable","Generic"]],
            ["PossibleGenericity (Data+Typeable+Generic) Manual", show $ sum $ map (flip (M.findWithDefault 0) a23) ["Data","Typeable","Generic"]]
           ]

@@ -30,12 +30,13 @@ data Analysis = Analysis {
     , sizeInst :: Int
     , overloadInst :: Int
     , topOverload :: M.Map ClassName Int
+    , dtgOverloadModules :: [FilePath]
     }
               deriving (Show)
 
 instance Monoid Analysis where
-    mempty = Analysis 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 mempty 0 0 mempty
-    (Analysis x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 x21 x22 x23) `mappend` (Analysis y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 y11 y12 y13 y14 y15 y16 y17 y18 y19 y20 y21 y22 y23) = Analysis
+    mempty = Analysis 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 mempty 0 0 mempty mempty
+    (Analysis x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 x21 x22 x23 x24) `mappend` (Analysis y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 y11 y12 y13 y14 y15 y16 y17 y18 y19 y20 y21 y22 y23 y24) = Analysis
                                                                                             (x1+y1)
                                                                                             (x2+y2)
                                                                                             (x3+y3)
@@ -59,10 +60,10 @@ instance Monoid Analysis where
                                                                                             (x21+y21)
                                                                                             (x22+y22)
                                                                                             (M.unionWith (+) x23 y23)
-
-
+                                                                                            (x24 ++ y24)
+                                                                                            
 instance NFData Analysis where
-    rnf (Analysis a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23) = a1
+    rnf (Analysis a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24) = a1
                                    `deepseq` a2
                                    `deepseq` a3
                                    `deepseq` a4
@@ -85,6 +86,7 @@ instance NFData Analysis where
                                    `deepseq` a21
                                    `deepseq` a22
                                    `deepseq` a23
+                                   `deepseq` a24
                                    `deepseq` ()
 
 
